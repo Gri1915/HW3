@@ -2,9 +2,6 @@ package lab3;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class MyList<T> implements Collection<T> {
     class Item<T>{
@@ -223,8 +220,8 @@ public class MyList<T> implements Collection<T> {
     }
 
     public Item indexAt ( int index){
-        if ((index <= this.counter - 1) & (index >= 0)) {
-            Item p = begin;
+        if ((index <= this.length - 1) & (index >= 0)) {
+            Item p = root;
             for (; index > 0; --index) {
                 p = p.getNext();
             }
