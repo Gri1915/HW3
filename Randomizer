@@ -4,15 +4,15 @@ import java.util.Collection;
 
 public class Randomizer {
     public static boolean randomFillInt(Collection<Integer> collection, long numbers) {
-    if (numbers <= 0)
-    {
-        return false;
+        if (numbers <= 0)
+        {
+            return false;
+        }
+        for (int i = 0; i < numbers; i++) {
+            collection.add((int)(Math.random() * 100));
+        }
+        return true;
     }
-    for (int i = 0; i < numbers; i++) {
-        collection.add((int)(Math.random() * 100));
-    }
-    return true;
-}
     public static boolean randomFillDouble(Collection<Double> collection, long numbers) {
         if (numbers <= 0)
         {
@@ -24,20 +24,22 @@ public class Randomizer {
         return true;
     }
     public static String randomString(int maxLength) {
-        String qwerty = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+        String qwerty = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
         char[] str = new char[maxLength];
+        String res = new String();
         for (int i = 0; i < maxLength; ++i){
-            int p =(int) (Math.random() *1);
-            if(p < 1){
-                str[i] = qwerty.charAt((int) (Math.random() * 52));
-            }
-            else if (p > 0){
-                str[i] = (char)(Math.random()*9);
-            }
-
+            str[i] = qwerty.charAt((int) (Math.random() * 62));
+            res = res + str[i];
         }
-
-        String res = str.toString();
         return res;
+    }
+    public static boolean randomFillString(Collection<String> collection,int maxLength, long numbers ){
+       if(numbers <= 0) {
+           return false;
+       }
+        for(int i = 0; i < numbers; ++i){
+            collection.add(Randomizer.randomString(maxLength));
+        }
+        return true;
     }
 }
